@@ -1,6 +1,6 @@
 //預設匯出
 export default{
-    props:['temp','isNew'],
+    props:['temp','isNew','productModal'],
     methods:{
       updateProduct(){
         let apiUrl = `${url}/api/${path}/admin/product`
@@ -17,9 +17,9 @@ export default{
           alert(`${alertContent}`)
           //重新刷新頁面
           this.$emit('get-products')
-          productModal.hide();
-        }).catch((error)=>{
-          alert(error.data.message) 
+          this.productModal.hide();
+        }).catch((err)=>{
+          console.log(`更新資料失敗`) 
         })
       },
     },

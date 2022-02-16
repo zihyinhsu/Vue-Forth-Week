@@ -1,13 +1,13 @@
 //預設匯出
 export default{
-    props:['temp'],
+    props:['temp','delProductModal'],
     methods:{
         deleteProduct(){
             axios.delete(`${url}/api/${path}/admin/product/${this.temp.id}`)
             .then((res)=>{
               alert(`已成功刪除商品`)
               this.$emit('get-products');
-              delProductModal.hide();
+              this.delProductModal.hide();
             }).catch((error)=>{
               alert(error.data.message) 
             })

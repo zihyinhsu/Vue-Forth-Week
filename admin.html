@@ -70,15 +70,18 @@
            aria-hidden="true">
           <products-modal 
           :temp="temp" 
+          :product-modal="productModal"
           @get-products="getProducts" 
-          @product-modal-hide = "modalHide('edit')" 
           :is-new="isNew"></products-modal>
       
       </div>
 
       <div id="delProductModal" ref="delProductModal" class="modal fade" tabindex="-1"
            aria-labelledby="delProductModalLabel" aria-hidden="true">
-        <del-products-modal :temp="temp" @get-products="getProducts"></del-products-modal>
+        <del-products-modal 
+        :temp="temp" 
+        @get-products="getProducts"
+        :del-product-modal="delProductModal"></del-products-modal>
       </div>
       <!-- Modal -->
     </div>

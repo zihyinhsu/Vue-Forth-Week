@@ -5,9 +5,6 @@ import delProductsModal from './delProductsModal.js'
 
 const products =[];
 
-let productModal={};
-let delProductModal={};
-
 const app = createApp({
   components:{
     pagination,
@@ -21,7 +18,9 @@ const app = createApp({
       },
       products: [],
       isNew: true,
-      pagination:{}
+      pagination:{},
+      productModal:{},
+      delProductModal:{}
     }
   },
 methods:{
@@ -58,7 +57,7 @@ methods:{
       this.temp={
         imagesUrl:[],
       }
-      productModal.show();
+      this.productModal.show();
       this.isNew = true;
     }else if(status === 'edit'){
       // 深拷貝
@@ -67,26 +66,23 @@ methods:{
       if (!this.temp.imagesUrl){
         this.temp.imagesUrl=[];
       }
-      productModal.show();
+      this.productModal.show();
       this.isNew = false;
     }else if (status === 'delete'){
       this.temp = {...product}
-      delProductModal.show();
+      this.delProductModal.show();
     }
   },
-  modalHide(status){
-    status.hide();
-  }
 },
 //生命週期
 mounted(){
   this.checkLogin();
 
-  productModal = new bootstrap.Modal(document.getElementById('productModal'), {
+  this.productModal = new bootstrap.Modal(this.$refs.productModal, {
     keyboard: false
   })
 
-  delProductModal = new bootstrap.Modal(document.getElementById('delProductModal'), {
+  this.delProductModal = new bootstrap.Modal(this.$refs.delProductModal, {
     keyboard: false
   })
 }
